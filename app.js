@@ -11,6 +11,7 @@ const DegreeRouter = require('./routes/degree')
 const BlogRouter = require('./routes/blog')
 const CertificateRouter = require('./routes/certifications');
 const FypRouter=require('./routes/fyp');
+const thesisRouter=require('./routes/thesis');
 
 var cors = require('cors')
 app.use(express.json());
@@ -34,4 +35,5 @@ connection.then((db) => {
 // app.use('/blog', BlogRouter)
 app.use('/certifications', CertificateRouter)
 app.use('/fyp', FypRouter)
+app.use('/thesis', thesisRouter)
 app.listen(3000, () => console.log("Connected to server on port: 3000"))

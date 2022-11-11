@@ -1,12 +1,12 @@
 var express = require('express');
 var router = express.Router();
-const FYPModel = require('../models/fypModel')
+const ThesesModel = require('../models/ThesesModel')
 
-//add new FYP 
+//add new theses paper 
 router.post('/add', function (req, res, next) {
-    FYPModel.create(req.body)
+    ThesesModel.create(req.body)
         .then((result) => {
-            console.log('FYP has been Added ', result);
+            console.log('publication has been Added ', result);
             res.statusCode = 200;
             res.setHeader('Content-Type', 'application/json');
             res.json(result);
@@ -14,9 +14,9 @@ router.post('/add', function (req, res, next) {
         .catch((err) => next(err));
 });
 
-//get all FYP
+//get all theses papers
 router.get('/', function (req, res, next) {
-    FYPModel.find({}).exec(function (error, results) {
+    ThesesModel.find({}).exec(function (error, results) {
         if (error) {
             return next(error);
         }
@@ -24,9 +24,9 @@ router.get('/', function (req, res, next) {
     });
 });
 
-//get single FYP
+//get single theses
 router.get('/:id', function (req, res, next) {
-    FYPModel.find({ _id: req.params.id }).exec(function (error, results) {
+    ThesesModel.find({ _id: req.params.id }).exec(function (error, results) {
         if (error) {
             return next(error);
         }
@@ -34,19 +34,19 @@ router.get('/:id', function (req, res, next) {
     });
 });
 
-//delete specific FYP
+//delete specific theses
 router.delete('/:id', function (req, res, next) {
-    FYPModel.deleteOne({ _id: req.params.id }, function (error, results) {
+    ThesesModel.deleteOne({ _id: req.params.id }, function (error, results) {
         if (error) {
             return next(error);
         }
         res.json(results);
     });
 });
-//update FYP
 
+//update specific theses
 router.put('/:id', function (req, res, next) {
-    FYPModel.findOneAndUpdate({ _id: req.params.id }, {
+    ThesesModel.findOneAndUpdate({ _id: req.params.id }, {
         "$set": {
             "Title": req.body.Title
         }

@@ -1,39 +1,34 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var thesesSchema = new Schema({
-    title: {
-        type: String,
+var FYPSchema = new Schema({
+    Title:{
+        type:String,
         required: true,
     },
     link: {
         type: String,
-        required: true
+       
+    },
+    publishDate:{
+        type: Date,
+        default: Date.now()
     },
     ResearchArea: {
         type: String,
-        required: true
     },
-    writers: {
+    Tool: {
         type: String,
-        required: true,
+    },
+    Student: {
+        type: String,
+         required:true
     },
     image: {
         type: String,
     },
-    Status: [String],
-    Degree: {
-        type: String,
-        required: true
-    },
-    publishDate: {
-        type: Date,
-        default: Date.now()
-    },
     Description:{
-        type: String,
-        required: true
+        type: String,  
     }
-
 });
 
-module.exports = mongoose.model('Thesis', thesesSchema);
+module.exports = mongoose.model('FYP', FYPSchema);
